@@ -12,20 +12,18 @@ jobs:
     unit_tests:
         name: "unit_tests (node: ${{ matrix.node }})"
         runs-on: ubuntu-latest
-        env:
-            FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
         strategy:
             matrix:
                 node: [22]
         steps:
-            - uses: actions/checkout@v4
+            - uses: actions/checkout@v6
               with:
                   repository: "TupiC/blocks-renderer-svelte"
                   persist-credentials: false
-            - uses: pnpm/action-setup@v4
+            - uses: pnpm/action-setup@v6
               with:
                   version: 11.6.0
-            - uses: actions/setup-node@v4
+            - uses: actions/setup-node@v6
               with:
                   node-version: ${{ matrix.node }}
                   cache: "pnpm"
