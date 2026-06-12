@@ -10,6 +10,9 @@ jobs:
     release:
         name: semantic-release
         runs-on: ubuntu-latest
+        env:
+            FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+            NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         permissions:
             contents: write
             id-token: write
@@ -40,7 +43,11 @@ jobs:
               run: pnpm build:lib
 
             - name: Release
+              if: env.NPM_TOKEN != ''
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
               run: pnpm release
+
+            - name: Skip release
+              if: env.NPM_TOKEN == ''
+              run: echo "Skipping semantic-release because NPM_TOKEN is not configured."
