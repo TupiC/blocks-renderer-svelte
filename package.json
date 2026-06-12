@@ -35,6 +35,10 @@
     "bugs": {
         "url": "https://github.com/TupiC/blocks-renderer-svelte/issues"
     },
+    "engines": {
+        "node": ">=22.13",
+        "pnpm": ">=11.6.0"
+    },
     "scripts": {
         "dev": "vite --host 0.0.0.0",
         "start": "pnpm dev",
@@ -64,7 +68,7 @@
         "@sveltejs/vite-plugin-svelte": "^6.2.1",
         "@testing-library/jest-dom": "^6.9.1",
         "@testing-library/svelte": "^5.3.1",
-        "@types/node": "^25.0.1",
+        "@types/node": "^22.19.21",
         "jsdom": "^27.3.0",
         "prettier": "^3.8.1",
         "semantic-release": "^24.2.9",
