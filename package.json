@@ -1,0 +1,78 @@
+{
+    "name": "blocks-renderer-svelte",
+    "version": "0.0.0",
+    "description": "Svelte library for rendering Strapi blocks content with customizable components",
+    "keywords": [
+        "svelte",
+        "strapi",
+        "blocks",
+        "renderer",
+        "content",
+        "cms"
+    ],
+    "author": "Christoph Tupi",
+    "license": "MIT",
+    "type": "module",
+    "files": [
+        "dist",
+        "README.md",
+        "LICENSE"
+    ],
+    "svelte": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "svelte": "./dist/index.js",
+            "default": "./dist/index.js"
+        }
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://git@github.com/TupiC/blocks-renderer-svelte.git"
+    },
+    "homepage": "https://github.com/TupiC/blocks-renderer-svelte#readme",
+    "bugs": {
+        "url": "https://github.com/TupiC/blocks-renderer-svelte/issues"
+    },
+    "scripts": {
+        "dev": "vite --host 0.0.0.0",
+        "start": "pnpm dev",
+        "start:playground": "pnpm dev",
+        "build:lib": "svelte-package",
+        "build:playground": "vite build",
+        "build": "pnpm build:lib && pnpm build:playground",
+        "test": "vitest run",
+        "test:watch": "vitest",
+        "check": "svelte-check --tsconfig ./tsconfig.json",
+        "lint": "pnpm check",
+        "format": "prettier --write \"src/**/*.{ts,svelte}\" \"tests/**/*.ts\"",
+        "copy-readme": "cp README.md dist/README.md",
+        "publish:lib": "pnpm build:lib && pnpm publish",
+        "publish:lib:dry-run": "pnpm build:lib && pnpm publish --dry-run",
+        "release": "semantic-release"
+    },
+    "peerDependencies": {
+        "svelte": "^5.0.0"
+    },
+    "devDependencies": {
+        "@semantic-release/changelog": "^6.0.0",
+        "@semantic-release/git": "^10.0.0",
+        "@semantic-release/github": "^9.0.0",
+        "@semantic-release/npm": "^12.0.0",
+        "@sveltejs/package": "^2.5.8",
+        "@sveltejs/vite-plugin-svelte": "^6.2.1",
+        "@testing-library/jest-dom": "^6.9.1",
+        "@testing-library/svelte": "^5.3.1",
+        "@types/node": "^25.0.1",
+        "jsdom": "^27.3.0",
+        "prettier": "^3.8.1",
+        "semantic-release": "^24.2.9",
+        "svelte": "^5.56.3",
+        "svelte-check": "^4.3.4",
+        "typescript": "~5.9.2",
+        "vite": "^7.3.5",
+        "vitest": "^4.1.8"
+    },
+    "packageManager": "pnpm@11.6.0"
+}
