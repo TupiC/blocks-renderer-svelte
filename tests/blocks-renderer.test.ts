@@ -3,6 +3,7 @@ import { describe, expect, it, vi } from 'vitest';
 
 import { BlocksRenderer } from '../src/lib';
 import CustomBlock from './CustomBlock.svelte';
+import CustomModifier from './CustomModifier.svelte';
 import type { BlocksComponents, ModifiersComponents } from '../src/lib/components-context';
 import type { BlocksContent, RootNode } from '../src/lib';
 
@@ -319,6 +320,26 @@ describe('BlocksRenderer', () => {
             expect(text.closest('u')).toBeInTheDocument();
             expect(text.closest('del')).toBeInTheDocument();
             expect(text.closest('code')).toBeInTheDocument();
+        });
+
+        it('renders a custom modifier component when provided', () => {
+            const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+
+            renderBlocks({
+                content: [
+                    {
+                        type: 'paragraph',
+                        children: [{ type: 'text', text: 'Custom bold', bold: true }],
+                    },
+                ],
+                modifiers: { bold: CustomModifier },
+            });
+
+            const customBold = screen.getByTestId('custom-bold');
+            expect(customBold).toHaveTextContent('Custom bold');
+            expect(customBold.closest('strong')).not.toBeInTheDocument();
+            expect(warnSpy).not.toHaveBeenCalled();
+            warnSpy.mockRestore();
         });
 
         it('ignores disabled modifiers', () => {

@@ -14,6 +14,7 @@ npm install blocks-renderer-svelte
 <script lang="ts">
     import { BlocksRenderer, type BlocksContent } from 'blocks-renderer-svelte';
     import MyHeading from './MyHeading.svelte';
+    import MyBold from './MyBold.svelte';
 
     const blocksContent: BlocksContent = [
         { type: 'paragraph', children: [{ type: 'text', text: 'Hello world' }] },
@@ -22,12 +23,17 @@ npm install blocks-renderer-svelte
     const customBlocks = {
         heading: MyHeading,
     };
+
+    const customModifiers = {
+        bold: MyBold,
+    };
 </script>
 
-<BlocksRenderer content={blocksContent} blocks={customBlocks} />
+<BlocksRenderer content={blocksContent} blocks={customBlocks} modifiers={customModifiers} />
 ```
 
 Custom block components receive the block's non-`type` props. For `heading` and `code` blocks, they also receive a `plainText` prop.
+Custom modifier components receive their formatted contents as Svelte children.
 
 ## Development
 

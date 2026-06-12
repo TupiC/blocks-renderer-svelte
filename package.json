@@ -52,8 +52,8 @@
         "lint": "pnpm check",
         "format": "prettier --write \"src/**/*.{ts,svelte}\" \"tests/**/*.ts\"",
         "copy-readme": "cp README.md dist/README.md",
-        "publish:lib": "pnpm build:lib && pnpm publish",
-        "publish:lib:dry-run": "pnpm build:lib && pnpm publish --dry-run",
+        "publish:lib": "pnpm build:lib && npm publish --access public",
+        "publish:lib:dry-run": "pnpm build:lib && npm publish --access public --dry-run",
         "release": "semantic-release"
     },
     "peerDependencies": {

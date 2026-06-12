@@ -1,5 +1,5 @@
 import { getContext } from 'svelte';
-import type { Component } from 'svelte';
+import type { Component, Snippet } from 'svelte';
 import type { Modifier } from './types';
 
 export interface BlockComponentProps {
@@ -9,7 +9,7 @@ export interface BlockComponentProps {
 }
 
 export type BlockComponent = Component<BlockComponentProps>;
-export type ModifierComponent = Component<{ children?: unknown }>;
+export type ModifierComponent = Component<{ children?: Snippet }>;
 
 export interface BlocksComponents {
     [key: string]: BlockComponent;
